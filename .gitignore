@@ -3,7 +3,7 @@ __pycache__/
 *.swp
 
 *.pth
-
+.idea/*
 GeNeVA.egg-info/
 build/
 dist/
