@@ -17,7 +17,8 @@ from tqdm import tqdm
 
 from geneva.models.object_localizer import inception_v3
 from geneva.utils.config import keys
-from geneva.utils.visualize import VisdomPlotter
+
+# from geneva.utils.visualize import VisdomPlotter
 
 
 model_urls = {
@@ -25,7 +26,7 @@ model_urls = {
     'inception_v3_google': 'https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth',
 }
 
-viz = VisdomPlotter(env_name='inception_localizer', server='http://localhost')
+# viz = VisdomPlotter(env_name='inception_localizer', server='http://localhost')
 
 
 class Inception3ObjectLocalizer(nn.Module):
@@ -275,7 +276,7 @@ def train_model(train_loader, model, criterion, optimizer, epoch,
                                 target_objects.cpu().data.numpy()[0],
                                 coords.data.cpu().numpy()[0],
                                 locations.data.cpu().numpy()[0])
-        viz.draw('detections', image)
+        # viz.draw('detections', image)
 
         if i % print_freq == 0:
             print('Epoch: [{0}][{1}/{2}]\t'
