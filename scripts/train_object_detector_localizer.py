@@ -400,7 +400,7 @@ def setup_inception_model(num_classes, pretrained=False, num_coords=3):
 def get_class_weights(train_loader, num_objects):
     n_total = np.zeros((num_objects,))
     for i, sample in enumerate(tqdm(train_loader)):
-        n_total += sample['bow'].sum(dim=0)
+        n_total += sample['bow'].sum(dim=0).numpy()
 
     n_total /= n_total.sum()
     n_total = 1. / n_total
