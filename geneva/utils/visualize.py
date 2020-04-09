@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 """Visualization Manager"""
 import numpy as np
-from visdom import Visdom
+# from visdom import Visdom
 
 
 class VisdomPlotter():
@@ -13,7 +13,7 @@ class VisdomPlotter():
             - env_name: name of the environment (str)
             - server: endpoint (url)
         """
-        self.viz = Visdom(server=server)
+        self.viz = None
         self.env = env_name
         self.plots = {}
         self.real_aggregate = []

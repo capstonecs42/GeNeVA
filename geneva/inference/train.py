@@ -10,7 +10,7 @@ from torch.utils.data import DataLoader
 from geneva.data.datasets import DATASETS
 from geneva.evaluation.evaluate import Evaluator
 from geneva.utils.config import keys, parse_config
-from geneva.utils.visualize import VisdomPlotter
+# from geneva.utils.visualize import VisdomPlotter
 from geneva.models.models import MODELS
 from geneva.data import codraw_dataset
 from geneva.data import clevr_dataset
@@ -47,7 +47,8 @@ class Trainer():
         elif cfg.dataset == 'iclevr':
             self.dataloader.collate_fn = clevr_dataset.collate_data
 
-        self.visualizer = VisdomPlotter(env_name=cfg.exp_name, server=cfg.vis_server)
+        # self.visualizer = VisdomPlotter(env_name=cfg.exp_name, server=cfg.vis_server)
+        self.visualizer = None
         self.logger = None
 
         self.cfg = cfg

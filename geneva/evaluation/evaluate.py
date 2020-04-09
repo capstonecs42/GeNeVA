@@ -49,8 +49,8 @@ class RecurrentGANEvaluator():
 
 if __name__ == '__main__':
     cfg = parse_config()
-    visualizer = VisdomPlotter(env_name=cfg.exp_name)
+    # visualizer = VisdomPlotter(env_name=cfg.exp_name)
     logger = None
     dataset = cfg.dataset
-    evaluator = Evaluator(cfg, visualizer, logger, dataset)
+    evaluator = Evaluator(cfg, None, logger, dataset)
     evaluator.evaluate()
