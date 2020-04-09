@@ -230,7 +230,7 @@ def validate(valid_loader, model, criterion,
 
 
 def train_model(train_loader, model, criterion, optimizer, epoch,
-                cuda_enabled=False, print_freq=1, pretrained=False):
+                cuda_enabled=True, print_freq=1, pretrained=False):
     detect_losses = AverageMeter()
     local_losses = AverageMeter()
     precision = AverageMeter()
