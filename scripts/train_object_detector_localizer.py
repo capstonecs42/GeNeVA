@@ -171,7 +171,7 @@ class WeightedBCE(torch.nn.Module):
         target = target * 0.9
         for i in range(pred.size(1)):
             loss = - (1. / pred.size(0)) * torch.sum(self.weights[1] * target[:, i] * torch.log(pred[:, i] + eps) +
-                                                     self.weights[0] * (1 - target[:, i]) * torch.log(1 - pred[:, i] + eps))
+                                                     self.weights[0] * (1 - target[:, i]) * torch.log(1 - pred[:, i] + eps)).cpu()
             loss *= self.objects_weights[i]
             total_loss.append(loss)
         return np.sum(total_loss)
