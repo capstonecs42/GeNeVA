@@ -392,6 +392,7 @@ def save_checkpoint(state, is_best, filename='inception_latest_checkpoint.pth', 
     torch.save(state, filename)
     if is_best:
         shutil.copyfile(filename, prefix + 'inception_best_checkpoint.pth')
+        print("Current best is {}".format(filename))
 
 
 def setup_inception_model(num_classes, pretrained=False, num_coords=3):
@@ -535,4 +536,5 @@ def show_detections(image, objects, coords, predctions):
 
 
 if __name__ == '__main__':
+    torch.set_default_tensor_type(torch.cuda.FloatTensor)
     train_inception_model()
