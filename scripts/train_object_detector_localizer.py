@@ -253,7 +253,7 @@ def train_model(train_loader, model, criterion, optimizer, epoch,
         locations = locations.cuda()
         detection_loss = criterion(detections, target_objects)
         localization_loss = torch.sum(
-            target_objects * torch.nn.functional.mse_loss(locations, coords, reduce=False).sum(dim=2)
+            target_objects * torch.nn.functional.mse_loss(locations, coords.cuda(), reduce=False).sum(dim=2)
         )
 
         loss = detection_loss + 0.0001 * localization_loss
@@ -438,7 +438,7 @@ def train_inception_model(seed, cuda_enabled, num_classes, lr, momentum, weight_
                           batch_size, num_workers, train_hdf5, num_epochs, print_freq,
                           pretrained, valid_hdf5, pos_weight, noise_fraction, bg_fraction_within_noise):
     if cuda_enabled is None:
-        cuda_enabled = True
+        cuda_enabled = False
     if pretrained is None:
         pretrained = False
         raise NotImplementedError
