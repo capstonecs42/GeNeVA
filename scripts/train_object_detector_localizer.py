@@ -253,7 +253,7 @@ def train_model(train_loader, model, criterion, optimizer, epoch,
         locations = locations.cuda()
         detection_loss = criterion(detections, target_objects)
         localization_loss = torch.sum(
-            target_objects * torch.nn.functional.mse_loss(locations, coords.cuda(), reduce=False).sum(dim=2)
+            target_objects.cuda() * torch.nn.functional.mse_loss(locations, coords.cuda(), reduce=False).sum(dim=2)
         )
 
         loss = detection_loss + 0.0001 * localization_loss
