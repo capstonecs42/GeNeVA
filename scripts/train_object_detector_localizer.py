@@ -272,7 +272,7 @@ def train_model(train_loader, model, criterion, optimizer, epoch,
         f1.update(fs, input.size(0))
 
         optimizer.zero_grad()
-        loss.backward()
+        loss.cuda().backward()
         optimizer.step()
 
         image = show_detections(input.data.cpu().numpy()[0],
