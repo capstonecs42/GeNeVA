@@ -438,7 +438,7 @@ def train_inception_model(seed, cuda_enabled, num_classes, lr, momentum, weight_
                           batch_size, num_workers, train_hdf5, num_epochs, print_freq,
                           pretrained, valid_hdf5, pos_weight, noise_fraction, bg_fraction_within_noise):
     if cuda_enabled is None:
-        cuda_enabled = False
+        cuda_enabled = True
     if pretrained is None:
         pretrained = False
         raise NotImplementedError
