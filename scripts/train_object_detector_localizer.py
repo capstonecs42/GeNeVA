@@ -171,8 +171,8 @@ class WeightedBCE(torch.nn.Module):
         target = target * 0.9
         for i in range(pred.size(1)):
             _a = (1. / pred.size(0))
-            _b = self.weights[1] * target[:, i] * torch.log(pred[:, i].cpu() + eps)
-            _c = self.weights[0] * (1 - target[:, i]) * torch.log(1 - pred[:, i].cpu() + eps)
+            _b = self.weights[1] * target[:, i] * torch.log(pred[:, i] + eps)
+            _c = self.weights[0] * (1 - target[:, i]) * torch.log(1 - pred[:, i]+ eps)
             loss = - _a * torch.sum(_b + _c)
             loss *= self.objects_weights[i]
             total_loss.append(loss)
@@ -419,7 +419,7 @@ def get_class_weights(train_loader, num_objects):
 @click.option('--lr', type=float, default=1e-3, help='Learning Rate for SGD.')
 @click.option('--momentum', type=float, default=0.9, help='Momentum for SGD.')
 @click.option('--weight-decay', type=float, default=1e-4, help='Weight Decay for SGD.')
-@click.option('--batch-size', type=int, default=128, help='Batch size for training.')
+@click.option('--batch-size', type=int, default=4, help='Batch size for training.')
 @click.option('--num-workers', type=int, default=8, help='Number of workers to use for data loader.')
 @click.option('--train-hdf5', type=click.Path(exists=True, file_okay=True, dir_okay=False,
                                               readable=True, resolve_path=True),
