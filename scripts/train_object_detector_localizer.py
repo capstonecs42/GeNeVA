@@ -390,7 +390,7 @@ class CoDrawSingleAllDataset(torch.utils.data.Dataset):
 def save_checkpoint(state, is_best, filename='inception_latest_checkpoint.pth', prefix=''):
     import os
     print(os.getcwd())
-    filename = '../../drive/"My Drive"/cap_data' + prefix + filename
+    filename = '/content/drive/My Drive/cap_data/' + prefix + filename
     torch.save(state, filename)
     if is_best:
         shutil.copyfile(filename, prefix + 'inception_best_checkpoint.pth')
