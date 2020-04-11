@@ -388,7 +388,7 @@ class CoDrawSingleAllDataset(torch.utils.data.Dataset):
 
 
 def save_checkpoint(state, is_best, filename='inception_latest_checkpoint.pth', prefix=''):
-    filename = prefix + filename
+    filename = '../drive/"My Drive"/cap_data' + prefix + filename
     torch.save(state, filename)
     if is_best:
         shutil.copyfile(filename, prefix + 'inception_best_checkpoint.pth')
@@ -508,14 +508,14 @@ def train_inception_model(seed, cuda_enabled, num_classes, lr, momentum, weight_
         if is_best:
             print('New Best!!!')
             best_f1 = f1_eval
-        save_checkpoint({
-            'epoch': epoch + 1,
-            'state_dict': model.state_dict(),
-            'best_f1': best_f1,
-            'pretrained': pretrained,
-            'cuda_enabled': cuda_enabled,
-            'num_classes': num_classes,
-        }, is_best, prefix=save_prefix)
+            save_checkpoint({
+                'epoch': epoch + 1,
+                'state_dict': model.state_dict(),
+                'best_f1': best_f1,
+                'pretrained': pretrained,
+                'cuda_enabled': cuda_enabled,
+                'num_classes': num_classes,
+            }, is_best, prefix=save_prefix)
 
 
 def show_detections(image, objects, coords, predctions):
