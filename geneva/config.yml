@@ -12,6 +12,6 @@ iclevr_objects: '../GeNeVA_datasets/data/iCLEVR/objects.txt'
 iclevr_test: '../GeNeVA_datasets/data/iCLEVR/clevr_test.h5'
 iclevr_val: '../GeNeVA_datasets/data/iCLEVR/clevr_val.h5'
 
-codraw_inception_objects: 'models/codraw_inception_best_checkpoint.pth'
+codraw_inception_objects: 'geneva/models/codraw_inception_best_checkpoint.pth'
 
 iclevr_inception_objects: 'models/iclevr_inception_best_checkpoint.pth'

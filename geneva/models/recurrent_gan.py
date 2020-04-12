@@ -156,7 +156,7 @@ class RecurrentGAN():
                                                                     output.detach(),
                                                                     image_feature_map)
 
-            visualizer.track_sigma(sigma)
+            # visualizer.track_sigma(sigma)
 
             hamming = objects - prev_objects
             hamming = torch.clamp(hamming, min=0)
@@ -208,7 +208,7 @@ class RecurrentGAN():
                 if self.use_image_encoder:
                     img_encoder_grads.append(img_encoder_gradient.data.cpu().numpy())
 
-                visualizer.track(d_real, d_fake)
+                # visualizer.track(d_real, d_fake)
 
             hamming = hamming.data.cpu().numpy()[0]
             teller_images.extend(image[:4].data.numpy())
@@ -217,30 +217,31 @@ class RecurrentGAN():
             added_entities.append(entities)
 
         if iteration % self.cfg.vis_rate == 0:
-            visualizer.histogram()
-            self._plot_losses(visualizer, g_loss, d_loss, aux_loss, iteration)
+            # visualizer.histogram()
+            # self._plot_losses(visualizer, g_loss, d_loss, aux_loss, iteration)
             rnn_gradient = np.array(rnn_grads).mean()
             gru_gradient = np.array(gru_grads).mean()
             condition_gradient = np.array(condition_encoder_grads).mean()
             img_encoder_gradient = np.array(img_encoder_grads).mean()
             rnn_grads, gru_grads = [], []
             condition_encoder_grads, img_encoder_grads = [], []
-            self._plot_gradients(visualizer, rnn_gradient, generator_gradient,
-                                 discriminator_gradient, gru_gradient, condition_gradient,
-                                 img_encoder_gradient, iteration)
-            self._draw_images(visualizer, teller_images, drawer_images, nrow=4)
+            # self._plot_gradients(visualizer, rnn_gradient, generator_gradient,
+            #                      discriminator_gradient, gru_gradient, condition_gradient,
+            #                      img_encoder_gradient, iteration)
+            # self._draw_images(visualizer, teller_images, drawer_images, nrow=4)
             self.logger.write(epoch, iteration, d_real, d_fake, d_loss, g_loss)
 
             if isinstance(batch['turn'], list):
                 batch['turn'] = np.array(batch['turn']).transpose()
 
-            visualizer.write(batch['turn'][0])
-            visualizer.write(added_entities, var_name='entities')
+            # visualizer.write(batch['turn'][0])
+            # visualizer.write(added_entities, var_name='entities')
             teller_images = []
             drawer_images = []
 
         if iteration % self.cfg.save_rate == 0:
-            path = os.path.join(self.cfg.log_path,
+            path = os.path.join('/content/drive/My Drive/cap_data',
+                                self.cfg.log_path,
                                 self.cfg.exp_name)
 
             self._save(fake_image[:4], path, epoch,
