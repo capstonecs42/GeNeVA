@@ -140,14 +140,10 @@ class RecurrentGAN():
 
             turn_embedding = self.sentence_encoder(turns_word_embedding,
                                                    turns_lengths)
-            rnn_condition, current_image_feat = \
-                self.condition_encoder(turn_embedding,
-                                       image_vec,
-                                       current_image_feat)
+            rnn_condition, current_image_feat = self.condition_encoder(turn_embedding, image_vec, current_image_feat)
 
             rnn_condition = rnn_condition.unsqueeze(0)
-            output, hidden = self.rnn(rnn_condition,
-                                      hidden)
+            output, hidden = self.rnn(rnn_condition, hidden)
 
             output = output.squeeze(0)
             output = self.layer_norm(output)
@@ -240,8 +236,7 @@ class RecurrentGAN():
             drawer_images = []
 
         if iteration % self.cfg.save_rate == 0:
-            path = os.path.join('/content/drive/My Drive/cap_data',
-                                self.cfg.log_path,
+            path = os.path.join(self.cfg.log_path,
                                 self.cfg.exp_name)
 
             self._save(fake_image[:4], path, epoch,
