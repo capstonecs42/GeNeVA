@@ -25,18 +25,15 @@ class RecurrentGANEvaluator():
     def evaluate(self, iteration):
         tester = Tester(self.cfg, use_val=True, iteration=iteration)
         tester.test()
+        print("Testing done")
         del tester
         torch.cuda.empty_cache()
         metrics_report = dict()
         if self.cfg.metric_inception_objects:
-            io_jss, io_ap, io_ar, io_af1, io_cs, io_gs = \
-                report_inception_objects_score(self.visualizer,
-                                               self.logger,
-                                               iteration,
-                                               self.cfg.results_path,
-                                               keys[self.cfg.dataset + '_inception_objects'],
-                                               keys[self.cfg.val_dataset],
-                                               self.cfg.dataset)
+            io_jss, io_ap, io_ar, io_af1, io_cs, io_gs = report_inception_objects_score(
+                self.visualizer, self.logger, iteration, self.cfg.results_path,
+                keys[self.cfg.dataset + '_inception_objects'],
+                keys[self.cfg.val_dataset], self.cfg.dataset)
 
             metrics_report['jaccard'] = io_jss
             metrics_report['precision'] = io_ap
