@@ -24,7 +24,7 @@
 --arch=resblocks
 --conditioning=projection
 --criterion=hinge
---log_path=/content/drive/"My Drive"/cap_data/logs/
+--log_path=/content/drive/My Drive/cap_data/logs/
 --activation=leaky_relu
 --input_dim=1024
 --hidden_dim=1024
@@ -46,7 +46,7 @@
 --img_encoder_type=conv
 --disc_img_conditioning=subtract
 -disc_sn
---results_path=/content/drive/"My Drive"/cap_data/logs/codraw_subtract/results
+--results_path=/content/drive/My Drive/cap_data/logs/codraw_subtract/results
 -inference_save_last_only
 -metric_inception_objects
 --save_rate=500
