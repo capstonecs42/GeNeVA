@@ -10,10 +10,6 @@ def _plot_scalar_metric(visualizer, value, iteration, metric_name):
 
 
 def report_inception_objects_score(visualizer, logger, iteration, img_path, model_path, inception_dataset, dataset_name):
-    print('Image Path {}'.format(img_path))
-    print('Model Path {}'.format(model_path))
-    print('inception_dataset {}'.format(inception_dataset))
-    print('dataset_name {}'.format(dataset_name))
     args = [('--img-dir', img_path),
             ('--model-path', model_path),
             ('--dataset-hdf5', inception_dataset),

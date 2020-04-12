@@ -52,7 +52,6 @@ class Trainer():
         self.logger = None
 
         self.cfg = cfg
-        print("Initiation done")
 
     def train(self):
         iteration_counter = 0
@@ -66,11 +65,10 @@ class Trainer():
                     evaluator = Evaluator.factory(self.cfg, self.visualizer,
                                                   self.logger)
                     evaluator.evaluate(iteration_counter)
-                    print("Evaluation done")
                     del evaluator
 
                 iteration_counter += 1
-                print("Iter: {}".format(iteration_counter))
+
                 self.model.train_batch(batch,
                                        epoch,
                                        iteration_counter,
@@ -80,6 +78,5 @@ class Trainer():
 
 if __name__ == '__main__':
     cfg = parse_config()
-    print('============\n\r{}\n\r============'.format(cfg))
     trainer = Trainer(cfg)
     trainer.train()
