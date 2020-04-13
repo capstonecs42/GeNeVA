@@ -25,6 +25,7 @@
 --conditioning=projection
 --criterion=hinge
 --log_path=/content/drive/My Drive/cap_data/logs/
+--load_snapshot=/content/drive/My Drive/cap_data/geneva_pre_trained/
 --activation=leaky_relu
 --input_dim=1024
 --hidden_dim=1024
